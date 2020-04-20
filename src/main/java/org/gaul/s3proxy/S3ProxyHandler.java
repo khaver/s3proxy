@@ -851,7 +851,6 @@ public class S3ProxyHandler {
         }
         ContainerAccess access = blobStore.getContainerAccess(containerName);
 
-        response.setCharacterEncoding(UTF_8);
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
