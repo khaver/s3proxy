@@ -851,6 +851,7 @@ public class S3ProxyHandler {
         }
         ContainerAccess access = blobStore.getContainerAccess(containerName);
 
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -948,7 +949,7 @@ public class S3ProxyHandler {
             String blobName) throws IOException {
         BlobAccess access = blobStore.getBlobAccess(containerName, blobName);
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1083,7 +1084,7 @@ public class S3ProxyHandler {
             BlobStore blobStore) throws IOException {
         PageSet<? extends StorageMetadata> buckets = blobStore.list();
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1124,7 +1125,8 @@ public class S3ProxyHandler {
 
     private void handleContainerLocation(HttpServletResponse response)
             throws IOException {
-        
+
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1162,7 +1164,7 @@ public class S3ProxyHandler {
         List<MultipartUpload> uploads = blobStore.listMultipartUploads(
                 container);
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1393,7 +1395,7 @@ public class S3ProxyHandler {
             response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET");
         }
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1541,7 +1543,7 @@ public class S3ProxyHandler {
 
         blobStore.removeBlobs(containerName, blobNames);
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -1837,7 +1839,8 @@ public class S3ProxyHandler {
 
         BlobMetadata blobMetadata = blobStore.blobMetadata(destContainerName,
                 destBlobName);
-        
+
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -2173,7 +2176,7 @@ public class S3ProxyHandler {
                     options);
         }
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -2270,7 +2273,7 @@ public class S3ProxyHandler {
             throw new S3Exception(S3ErrorCode.MALFORMED_X_M_L);
         }
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (PrintWriter writer = response.getWriter()) {
             response.setStatus(HttpServletResponse.SC_OK);
             response.setContentType(XML_CONTENT_TYPE);
@@ -2394,7 +2397,7 @@ public class S3ProxyHandler {
 
         String encodingType = request.getParameter("encoding-type");
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -2611,7 +2614,7 @@ public class S3ProxyHandler {
             }
         }
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
@@ -2868,7 +2871,7 @@ public class S3ProxyHandler {
             return;
         }
 
-        
+        response.setHeader("Content-Type", "application/xml");
         try (Writer writer = response.getWriter()) {
             response.setContentType(XML_CONTENT_TYPE);
             XMLStreamWriter xml = xmlOutputFactory.createXMLStreamWriter(
